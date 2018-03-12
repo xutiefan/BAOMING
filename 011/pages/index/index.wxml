@@ -1,0 +1,39 @@
+<!--index.wxml-->
+<import src="../common/temp1.wxml" />
+<view class="container">
+  <include src="../common/header.wxml"/>
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+    <view class="usermotto">
+      <text class="user-motto">{{motto}}</text>
+    </view>
+    <view id="outer" bind:tap="handleTap1">
+      outer view
+      <view id="middle" catch:tap="handleTap2">
+        middle view
+        <view id="inner" bind:tap="handleTap3">
+          inner view
+        </view>
+      </view>
+    </view>
+    <template is="item" data="{{text : 'my template item1'}}" />
+    <wxs src="./../common/comm.wxs" module="comms"/>
+    <view>foo: {{comms.FOO}}</view>
+    <view> {{comms.bar(comms.FOO)}}</view>
+    <view> {{comms.msg}}</view>
+    <wxs src="./../common/tools.wxs" module="tools" />
+    <wxs module="logics">
+      var some_msg = "wxs some msg.";
+      module.exports = {
+      msg : some_msg
+      }
+
+    </wxs>
+    <view class="logics">{{logics.msg}}</view>
+    <include src="../common/footer.wxml"/>
+</view>

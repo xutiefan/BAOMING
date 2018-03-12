@@ -1,0 +1,17 @@
+  var comms = require("./comm.wxs");
+  console.log(comms.FOO);
+  console.log(comms.msg);
+  var a = 10, b = 20;
+
+  // 左移运算
+  console.log(80 === (a << 3));
+  // 无符号右移运算
+  console.log(2 === (a >> 2));
+  // 带符号右移运算
+  console.log(2 === (a >>> 2));
+  // 与运算
+  console.log(2 === (a & 3));
+  // 异或运算
+  console.log(9 === (a ^ 3));
+  // 或运算
+  console.log(11 === (a | 3));
